@@ -19,5 +19,5 @@ if dev:
             proxy_set_header X-Forwarded-For $remote_addr;
         }
 
-4. docker compose up
+4. set env in .env or system and docker compose up
 5. go to https://HOSTNAME//identity, change redirect url`s in realms setting to your hostname
