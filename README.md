@@ -1,5 +1,5 @@
-1. add /certs dir 
-2. add /dist dir with front build
+1. add ./nginx/certs dir in 
+2. add ./nginx/dist dir with front build
 3. set your cert names in nginx.conf && configure root path
 
 if prod: 
