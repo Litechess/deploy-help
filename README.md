@@ -1,7 +1,13 @@
 1. add ./nginx/certs dir in 
-2. add ./nginx/dist dir with front build
-3. set your cert names in nginx.conf && configure root path
+2. add ./nginx/dist dir with front build. Change env file in front project (NEED FIX THIS)
+3. set your cert names in nginx.conf && configure root path.
+4. if self-hosted cert, build new backend image (mkcert example)
+bindings/
+    /ca-certificates/
+        type 
+        rootCA.pem
 
+5. Change nginx root domain conf
 if prod: 
 
         location / {
@@ -20,4 +26,5 @@ if dev:
         }
 
 4. set env in .env or system and docker compose up
-5. go to https://HOSTNAME//identity, change redirect url`s in realms setting to your hostname
+5. go to identity.${DOMAIN}, change redirect url`s in realms setting to your hostname
+
