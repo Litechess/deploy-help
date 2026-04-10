@@ -45,22 +45,20 @@ services:
       - mongo_data:/data/db
 
 
-  # dont need this if use cloudflare tunnel, but it can be useful for local development
-
   # nginx:
   #   image: nginx:alpine
   #   restart: always
   #   ports:
   #     - "${NGINX_HTTP_PORT}:80"
   #     - "${NGINX_HTTPS_PORT}:443"
-  #   volumes:
-  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-  #     - ./nginx/certs:/etc/nginx/certs:ro
-  #     - ./nginx/dist:/usr/share/nginx/html:ro
+  # volumes:
+  #   - /etc/letsencrypt:/etc/letsencrypt:ro
+  #   - ./nginx.conf:/etc/nginx/nginx.conf:ro
 
   minio:
     image: minio/minio
     container_name: minio
+    restart: always
     ports:
       - "${MINIO_PORT}:9000"  
       - "${MINIO_WEB_PORT}:9001"   
@@ -74,7 +72,7 @@ services:
       - minio-data:/data
 
   litechess-app:
-    image: litechess-modulith:latest
+    image: trymad/litechess-modulith:1
     restart: always
     environment:
       KEYCLOAK_REALM_URL: https://identity.${HOST_ADDRESS}/realms/${KEYCLOAK_REALM}
@@ -107,7 +105,7 @@ services:
     ports:
       - "${SERVER_PORT}:8080"
   litechess-web:
-    image: litechess-web:0.1
+    image: trymad/litechess-web:1
     restart: always
     ports:
       - "${WEB_PORT}:80"
