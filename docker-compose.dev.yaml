@@ -1,0 +1,24 @@
+services:
+  minio:
+    extra_hosts:
+    - "s3.localhost:host-gateway"
+    - "s3-console.localhost:host-gateway"
+    ports:
+    - "9000:9000"
+    - "9001:9001"
+  litechess-app:
+    extra_hosts:
+      - "s3.localhost:host-gateway"
+      - "identity.localhost:host-gateway"
+  keycloak:
+    command:
+      - start-dev
+      - --import-realm
+  litechess-web:
+    image: dev/litechess-web:1
+  postgres:
+    ports:
+    - "5432:5432"
+  mongo:
+    ports:
+    - "27017:27017"
