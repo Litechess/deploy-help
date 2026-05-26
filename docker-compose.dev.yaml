@@ -15,7 +15,8 @@ services:
       - start-dev
       - --import-realm
   litechess-web:
-    image: dev/litechess-web:1
+    image: dev/litechess-web:1.2
+      
   postgres:
     ports:
     - "5432:5432"

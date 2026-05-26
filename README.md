@@ -59,4 +59,3 @@ ingress:
 
 1. set env in .env or system and docker compose up
 2. go to identity.${DOMAIN}, change redirect url`s in realms setting to your hostname
-
